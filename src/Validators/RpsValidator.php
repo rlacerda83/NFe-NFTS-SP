@@ -16,11 +16,16 @@ class RpsValidator
     {
         $rpsOK = [];
 
-        if ($rps instanceof Rps)
-            $rps = [$rps];
+        $processRPS = null;
+        if ($rps instanceof Rps) {
+            $processRPS[] = [$rps];
+        }
 
-        foreach ($rps as $item) {
-            $item = $item->toArray();
+        if (is_array($rps)) {
+            $processRPS[] = $rps;
+        }
+
+        foreach ($processRPS as $item) {
 
             if (empty($item[SimpleFieldsEnum::IM_PROVIDER]))
                 $item[SimpleFieldsEnum::IM_PROVIDER] = $baseInformation->getIm();

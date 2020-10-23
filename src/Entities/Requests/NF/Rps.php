@@ -58,6 +58,7 @@ class Rps implements UserRequest
     private $cpf;
     private $cnpj;
 
+    
     public function __construct()
     {
         $this->setTipoRps(RPSType::RECIBO_PROVISORIO);
@@ -67,7 +68,6 @@ class Rps implements UserRequest
         $this->setValorDeducoes(0);
         $this->setValorServicos(0);
         $this->setIssRetido(false);
-        $this->setSerieRps('A');
         $this->setAliquotaServicos('0');
         $this->setCidade(3550308);
     }
