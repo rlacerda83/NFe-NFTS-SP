@@ -151,7 +151,6 @@ class Period implements UserRequest
             HeaderEnum::START_DATE => $this->dtInicio,
             HeaderEnum::END_DATE => $this->dtFim,
             HeaderEnum::PAGE_NUMBER => $this->pagina,
-            HeaderEnum::TRANSACTION => $this->transacao,
         ];
     }
 }
