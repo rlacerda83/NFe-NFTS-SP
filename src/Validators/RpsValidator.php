@@ -18,17 +18,22 @@ class RpsValidator
 
         $processRPS = null;
         if ($rps instanceof Rps) {
-            $processRPS[] = [$rps];
+            $processRPS = [$rps];
         }
 
         if (is_array($rps)) {
-            $processRPS[] = $rps;
+            $processRPS = $rps;
         }
 
         foreach ($processRPS as $item) {
+            if ($item instanceof Rps) {
+                $item = $item->toArray();
+            }
 
-            if (empty($item[SimpleFieldsEnum::IM_PROVIDER]))
+            if (empty($item[SimpleFieldsEnum::IM_PROVIDER])) {
                 $item[SimpleFieldsEnum::IM_PROVIDER] = $baseInformation->getIm();
+            }
+                
 
             $item[RpsEnum::ISS_RETENTION] = $item[RpsEnum::ISS_RETENTION] ? 'true' : 'false';
 
