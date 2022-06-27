@@ -55,7 +55,6 @@ class RpsEnum
             RpsEnum::SERVICE_CODE,
             RpsEnum::SERVICE_TAX,
             RpsEnum::ISS_RETENTION,
-            RpsEnum::CITY_INSTALLMENT,
         ];
     }
 
