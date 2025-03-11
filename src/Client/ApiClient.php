@@ -12,6 +12,15 @@ class ApiClient
 {
     public static function send(WsdlBase $wsdlBase, $method, BaseInformation $baseInformation)
     {
+        $context = [
+            "ssl" => [
+                "verify_peer" => true,
+                "verify_peer_name" => true,
+                "allow_self_signed" => false,
+                "ciphers" => "TLSv1.2",  // Força o uso de TLS 1.2
+            ]
+        ];
+
         $options = [
             'location' => $wsdlBase->getEndPoint(),
             'keep_alive' => true,
@@ -19,6 +28,7 @@ class ApiClient
             'local_cert' => $baseInformation->getCertificatePath(),
             'passphrase' => $baseInformation->getCertificatePass(),
             'cache_wsdl' => WSDL_CACHE_NONE,
+            "stream_context" => $context
         ];
 
         try {
