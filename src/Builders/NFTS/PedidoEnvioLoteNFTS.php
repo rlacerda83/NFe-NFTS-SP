@@ -20,8 +20,13 @@ class PedidoEnvioLoteNFTS extends NftsAbstract
 
     public function makeXmlRequest(BaseInformation $information, $lot)
     {
+        if (isset($lot[0])) {
+            $lot = $lot[0];
+        }
+
         $documents = NftsValidator::validateRequest($information, General::getKey($lot, NftsEnum::NFTS));
         $header = $this->makeHeader($information, [
+            HeaderEnum::VERSION => "1",
             HeaderEnum::SENDER => true,
             HeaderEnum::TRANSACTION => General::getKey($lot, HeaderEnum::TRANSACTION),
             HeaderEnum::START_DATE => General::getKey($lot, HeaderEnum::START_DATE),

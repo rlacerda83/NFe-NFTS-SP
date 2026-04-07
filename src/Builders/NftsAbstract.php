@@ -182,8 +182,26 @@ abstract class NftsAbstract implements InputTransformer
         $document = General::getKey($extraInformations, NftsEnum::CNPJ_PROVIDER)
             ? [NftsEnum::CNPJ_PROVIDER => General::getKey($extraInformations, NftsEnum::CNPJ_PROVIDER)]
             : [NftsEnum::CPF_PROVIDER => General::getKey($extraInformations, NftsEnum::CPF_PROVIDER)];
-        return [
+
+        $endereco = General::getKey($extraInformations,NftsEnum::PRESTADOR_ADRESS);
+        $email = General::getKey($extraInformations, NftsEnum::EMAIL);
+
+        $provider = [
             HeaderEnum::CPFCNPJ => $document,
+            'Endereco' => [
+                'Logradouro' => $endereco['Logradouro'],
+                'NumeroEndereco' => $endereco['NumeroEndereco'],
+                'Bairro' => $endereco['Bairro'],
+                'Cidade' => $endereco['Cidade'],
+                'UF' => $endereco['UF'],
+                'CEP' => $endereco['CEP'],
+            ],
         ];
+
+        if (!empty($email)) {
+            $provider['Email'] = $email;
+        }
+
+        return $provider;
     }
 }

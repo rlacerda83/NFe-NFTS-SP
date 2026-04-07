@@ -43,6 +43,7 @@ class Nfts implements UserRequest
     private $razaoSocialTomador;
     private $codigoCEI;
     private $matriculaObra;
+    private $prestadorEndereco;
 
     public function __construct()
     {
@@ -492,6 +493,10 @@ class Nfts implements UserRequest
         $this->matriculaObra = $matriculaObra;
     }
 
+    public function setPrestadorEndereco(array $endereco)
+    {
+        $this->prestadorEndereco = $endereco;
+    }
     public function toArray()
     {
         return [
@@ -521,6 +526,8 @@ class Nfts implements UserRequest
             SimpleFieldsEnum::CORPORATE_NAME_TAKER => $this->razaoSocialTomador,
             NftsEnum::CEI_CODE => $this->codigoCEI,
             NftsEnum::WORK_REGISTRATION => $this->matriculaObra,
+            NftsEnum::PRESTADOR_ADRESS => $this->prestadorEndereco,
+            NftsEnum::EMAIL => $this->emailPrestador
         ];
     }
 }
