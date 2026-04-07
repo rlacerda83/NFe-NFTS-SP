@@ -31,6 +31,8 @@ class NftsEnum
     const TAKER = 'Tomador';
     const CEI_CODE = 'CodigoCEI';
     const WORK_REGISTRATION = 'MatriculaObra';
+    const PRESTADOR_ADRESS = 'PrestadorEndereco';
+    const EMAIL = 'PrestadorEmail';
 
     public static function simpleTypes(){
         return [
